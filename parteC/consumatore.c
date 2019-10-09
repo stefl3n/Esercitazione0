@@ -6,13 +6,14 @@
 #define MAX_STRING_LENGTH 256
 int main(int argc, char* argv[]){
 	
+	// fare controllo argomenti
 	if (argc != 2 && argc!=3) { 
 		perror(" numero di argomenti sbagliato"); 
 		exit(1);
 	}
 	
 	char *file_in, read_char, *prefix, buff[MAX_STRING_LENGTH]; 
-	int i, j, fd, preflen, nread, bo;
+	int i, fd, preflen, nread, trovato;
 	
 	if(argc==3){
 		
@@ -29,35 +30,18 @@ int main(int argc, char* argv[]){
 	prefix =argv[1];
 	preflen=strlen(prefix);
 
-	// fare controllo argomenti
+	
 	while(nread = read(fd, &read_char, sizeof(char))){
 	/* un carattere alla volta fino ad EOF*/
 	
 		if (nread > 0){
-			i=1;
-			if(read_char==prefix[0]){
-				buff[0]=read_char;
-				bo=1;
-				while((i<preflen && bo)){
-					read(fd, &read_char, sizeof(char));
-					buff[i]=read_char;
-					
-					if(read_char!=prefix[i])
-						bo=0;
-					i++;
-						
-				}
-				
-				if(!bo){
-					for(j=0; j<i; j++)
-						putchar(buff[j]);
-						
-				}
+			trovato=0;
+			for(i=0; i<preflen && !trovato; i++){
+				if(read_char==prefix[i])
+					trovato=1;
 			}
-			else{
+			if(!trovato)
 				putchar(read_char);
-			}	
-		
 		}
 		else
 		{
