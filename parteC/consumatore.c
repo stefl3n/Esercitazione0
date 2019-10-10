@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
 	}
 	else if(argc==2){
 		
-		while(read_char=getchar()){
+		while((read_char=getchar())!=EOF){
 			/* un carattere alla volta fino ad EOF*/
 				trovato=0;
 
