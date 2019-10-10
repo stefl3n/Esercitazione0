@@ -7,25 +7,15 @@
 
 
 int main(int argc, char* argv[]){ // preparazione programma
-    int fd, readValues, bytes_to_write, written; char *file_out;
+    int fd, written; char *file_out;
 	char c;
 	
-	// fare controllo argomenti
-
+	//controllo argomenti
 	if (argc != 2) { 
 		perror(" numero di argomenti sbagliato …"); exit(EXIT_FAILURE);
 	}
 	
 	file_out = argv[1];
-	
-	//printf("Quante righe vuoi inserire?\n");
-	//readValues = scanf("%d", &righe);
-
-	//if( readValues != 1 ) {
-	//	printf("Errore: immettere un intero!"); exit(1);
-	//}
-	//gets (buf); // consumare il fine linea
-
 	fd = open(file_out, O_WRONLY|O_CREAT|O_TRUNC, 00640);
 
 	if (fd < 0) { 

@@ -3,16 +3,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#define MAX_STRING_LENGTH 256
+
 int main(int argc, char* argv[]){
 	
 	// fare controllo argomenti
 	if (argc != 2 && argc!=3) { 
-		perror(" numero di argomenti sbagliato"); 
+		perror("Numero di argomenti sbagliato.\n"); 
 		exit(1);
 	}
 	
-	char *file_in, read_char, *prefix, buff[MAX_STRING_LENGTH]; 
+	char *file_in, read_char, *prefix; 
 	int i, fd, preflen, nread, trovato;
 	
 	prefix =argv[1];
