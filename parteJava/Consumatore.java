@@ -9,9 +9,11 @@ public class Consumatore {
 	
 	public static void main(String[] args) throws IOException {
 		
-		String word = "ciao";
+		String word = args[0];
 		int buff;
+		String buffer;
 		FileReader in = null;
+		buffer="";
 		try {
 		if(args.length==1) {
 		
@@ -36,10 +38,12 @@ public class Consumatore {
 					;
 				}
 				else {
-				System.out.print((char)buff);
+				buffer=buffer+(char)buff;
+				
 				}
 			
 		}
+		System.out.println(buffer);
 		in.close();
 		}
 		catch(IOException e)
